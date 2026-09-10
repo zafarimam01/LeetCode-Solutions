@@ -7,10 +7,9 @@ public:
         int l=0,r=0,zero=0;
         while(r < n){
             if(nums[r] == 0) zero++;
-            while(zero > k){
-                if(nums[l] == 0){
+            if(zero > k){
+                if(nums[l] == 0)
                     zero--;
-                }
                 l++;
             }
             if(zero <= k){
