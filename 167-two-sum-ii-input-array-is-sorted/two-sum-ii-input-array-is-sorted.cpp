@@ -2,24 +2,24 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& numbers, int target) {
         int n = numbers.size();
-        int low = 0;
-        int high = n-1;
-        vector<int> arr;
-        while(low < high){
-            int mid = low + (high - low) / 2;
-            int sum = numbers[low] + numbers[high];
-            if(sum == target){
-                arr.push_back(low+1);
-                arr.push_back(high+1);
-                return arr;
-            }
-            else if(sum > target){
-                high--;
-            }
-            else{
-                low++;
+        for(int i = 0; i<n; ++i){
+            int x = target - numbers[i];
+            int low = i+1;
+            int high = n-1;
+
+            while(low <= high){
+                int mid = low + (high - low) / 2;
+                if(x == numbers[mid]){
+                    return {i+1,mid+1};
+                }
+                else if(numbers[mid] > x){
+                    high = mid -1;
+                }
+                else{
+                    low = mid + 1;
+                }
             }
         }
-        return arr;
+        return {};
     }
 };
