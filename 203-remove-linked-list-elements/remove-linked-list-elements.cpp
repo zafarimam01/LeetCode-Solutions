@@ -18,17 +18,17 @@ public:
         dummy->next = head;
         ListNode* prev = dummy;
         while(curr != NULL){
-            ListNode* temp = curr;
             ListNode* nextNode = curr->next;
             if(curr->val == val){
-                prev->next = curr->next;
-                delete temp;
-                
+                prev->next = nextNode;
+                delete curr;
             }
             else
                 prev = curr;
             curr = nextNode;
         }
-        return dummy->next;
+        ListNode* newHead = dummy->next;
+        delete dummy;
+        return newHead;
     }
 };
